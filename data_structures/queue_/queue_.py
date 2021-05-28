@@ -1,3 +1,4 @@
+#очередь с приоритетом - реализовать
 """
 Programming for linguists
 
