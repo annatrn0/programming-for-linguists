@@ -13,21 +13,27 @@ class Stack:
     Stack Data Structure
     """
     # pylint: disable=missing-module-docstring
-    def __init__(self, data: Iterable = None):
+    def __init__(self, max_num: int, data: Iterable = None):
         self.data = list(data) if data else []
+        self.max_num = max_num
 
     def push(self, element):
         """
         Add the element ‘element’ at the top of stack
         :param element: element to add to stack
         """
-        self.data.append(element)
+        if len(self.data) >= self.max_num:
+            return 'The stack is overflow!'
+        else:
+            self.data.append(element)
+            return 'Element added!'
 
     def pop(self):
         """
         Delete the element on the top of stack
         """
         self.data.pop(-1)
+        return 'Element deleted!'
 
     def top(self):
         """
@@ -50,3 +56,12 @@ class Stack:
                  False if stack contains elements
         """
         return not bool(self.size())
+
+# stack_1 = Stack(2, '0')
+# print(stack_1.data)
+# print(stack_1.push('1'))
+# print(stack_1.data)
+# print(stack_1.size())
+# print(stack_1.push('2'))
+# print(stack_1.data)
+# print(stack_1.size())
