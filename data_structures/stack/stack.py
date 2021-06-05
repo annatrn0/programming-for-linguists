@@ -57,10 +57,28 @@ class Stack:
         """
         return not bool(self.size())
 
-# stack_1 = Stack(2, '0')
+    def __len__(self):
+        return len(self.data)
+
+    def __iter__(self):
+        self.index = 0
+        return self
+
+    def __next__(self):
+        self.index += 1
+        return self.data[self.index]
+
+
+# stack_1 = Stack(3, '2')
 # print(stack_1.data)
 # print(stack_1.push('1'))
 # print(stack_1.data)
+# print(stack_1.push('0'))
+# print(stack_1.data)
+# print(len(stack_1))
+# print(iter(stack_1))
+# print(next(stack_1))
+# print(next(stack_1))
 # print(stack_1.size())
 # print(stack_1.push('2'))
 # print(stack_1.data)

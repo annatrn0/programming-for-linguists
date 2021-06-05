@@ -19,7 +19,7 @@ class Queue_:
         self.priority = priority
         self.data = []
         for element in data:
-            self.data.insert(priority, element)
+            self.data.insert(priority, element) 
 
     def put(self, priority, element):
         """
@@ -75,6 +75,17 @@ class Queue_:
         :return: Maximal size of queue_
         """
         return 0
+
+    def __len__(self):
+        return len(self.data)
+
+    def __iter__(self):
+        self.index = 0
+        return self
+
+    def __next__(self):
+        self.index += 1
+        return self.data[self.index]
 
 
 # queue_1 = Queue_(1, '3')
