@@ -14,12 +14,10 @@ class Digit(Element):
     """
 
     def __init__(self, digit_as_string: Union[float, str]):
-        # print(digit_as_string)
         if isinstance(digit_as_string, str) and ',' in digit_as_string:
-            digit_as_string = digit_as_string.replace(',', '.')
+            digit_as_string.replace(',', '.') # 3,14 --> 3.14
 
         self.digit = float(digit_as_string)
-        # self.digit = None
         pass
 
     def __str__(self) -> str:
@@ -32,4 +30,3 @@ class Digit(Element):
         """
         Magic method to compare instances of Digit class
         """
-        pass
