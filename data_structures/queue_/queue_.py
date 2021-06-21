@@ -1,4 +1,7 @@
 #очередь с приоритетом - реализовать
+
+#__reps__
+#__next__
 """
 Programming for linguists
 

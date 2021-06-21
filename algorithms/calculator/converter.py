@@ -25,6 +25,16 @@ class ReversePolishNotationConverterState:
         Help function
         :return:
         """
+        #cмотрим на верхний элемент, если это открывающаяся скобка, то элемент кладется
+        #иначе выбрасывание верхнего из стека
+        el = self.stack.top()
+
+        while not isinstance(el, OpenBracket):
+            self.expression_in_postfix_notation.put(el)
+            self.stack.pop()
+            el = self.stack.top()
+
+
 
 
 class ReversePolishNotationConverter:
@@ -42,6 +52,10 @@ class ReversePolishNotationConverter:
         :return: ReversePolishNotation object
         """
 
+        while not state.expression_in_infix_notation.empty():
+
+            #тут проверка: это диджит, откр скобка, закр скобка или
+
     @staticmethod
     def pop_from_stack_until_prioritizing(operator: Op, state: ReversePolishNotationConverterState):
         """
@@ -50,6 +64,12 @@ class ReversePolishNotationConverter:
         :param operator: Instance of Op class - current operator
         :param state: State of the RPN convert process
         """
+        stack = state.stack
+        while (not stack.empty() and ReversePolishNotationConverter.is_binary_operation(stack.top())
+        and stack.top() > operator):
+            state.expression_in_postfix_notation.put(stack.top())
+            stack.pop()
+        stack.push(operator)
 
     @staticmethod
     def read_digit(state) -> Digit:
@@ -67,6 +87,9 @@ class ReversePolishNotationConverter:
         :param character: current symbol
         :return: True if character can be part of a digit, else False
         """
+        #циклом класть в строку?? типа проверка на то, цельное ли число, проверка на налицие == "."
+        #проверка на int()
+
 
     @staticmethod
     def is_open_bracket(operator: Op) -> bool:
@@ -76,6 +99,8 @@ class ReversePolishNotationConverter:
         :param operator: Operator redden from the infix expression
         :return: True id this operator is the open bracket operator else False
         """
+        #op = OpFactory.get('+')
+        #isinstance (op, скобка/BinaryOp)
 
     @staticmethod
     def is_close_bracket(operator: Op) -> bool:
